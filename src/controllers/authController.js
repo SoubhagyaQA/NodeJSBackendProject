@@ -216,4 +216,4 @@ module.exports={
   getAllUsers,
   sendOtp,
   verifyOtp
-}
+};
