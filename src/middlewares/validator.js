@@ -465,7 +465,114 @@ const jobApplicationValidator = async (req, res, next) => {
   }
 };
 
+const employeeValidator = async (req, res, next) => {
+  try {
 
+    const schema = Joi.object({
+
+      name: Joi.string().min(3).max(50).required().messages({
+        "string.empty": "Employee name is required",
+        "any.required": "Employee name is required"
+      }),
+
+      department: Joi.string().required().messages({
+        "string.empty": "Department is required",
+        "any.required": "Department is required"
+      }),
+
+      designation: Joi.string().required().messages({
+        "string.empty": "Designation is required",
+        "any.required": "Designation is required"
+      }),
+
+      status: Joi.string().valid("Active", "Inactive").required().messages({
+        "any.only": "Status must be Active or Inactive",
+        "any.required": "Status is required"
+      })
+
+    });
+
+    const { error } = schema.validate(req.body);
+
+    if (error) {
+      return res.status(400).json({
+        status: "error",
+        message: "Validation failed",
+        details: error.details.map((err) => err.message)
+      });
+    }
+
+    next();
+
+  } catch (err) {
+    return res.status(500).json({
+      status: "error",
+      message: "Internal Server Error"
+    });
+  }
+};
+
+const searchEmployeeValidator = async (req, res, next) => {
+  try {
+
+    const schema = Joi.object({
+      search: Joi.string().required().messages({
+        "string.empty": "Search keyword is required",
+        "any.required": "Search keyword is required"
+      }),
+      department: Joi.string().optional(),
+      status: Joi.string().valid("Active", "Inactive").optional()
+    });
+    
+
+    const { error } = schema.validate(req.query);
+
+    if (error) {
+      return res.status(400).json({
+        err: true,
+        message: error.details[0].message,
+        data: null
+      });
+    }
+    next();
+  } catch (err) {
+    res.status(500).json({
+      err: true,
+      message: "Validation error",
+      data: err.message
+    });
+  }
+};
+
+const paginationValidator = async (req, res, next) => {
+  try {
+
+    const schema = Joi.object({
+      page: Joi.number().integer().min(1).default(1),
+      limit: Joi.number().integer().min(1).max(50).default(10)
+    });
+    const { error, value } = schema.validate(req.query);
+    if (error) {
+      return res.status(400).json({
+        err: true,
+        message: error.details[0].message,
+        data: null
+      });
+    }
+    req.query = value;
+
+    next();
+
+  } catch (err) {
+
+    res.status(500).json({
+      err: true,
+      message: "Validation error",
+      data: err.message
+    });
+
+  }
+};
 module.exports = {
   registerValidator,
   loginValidator,
@@ -476,6 +583,9 @@ module.exports = {
   fileUploadrValidator,
   searchUserValidator,
   paginationUserValidator,
-  jobApplicationValidator
+  jobApplicationValidator,
+  employeeValidator,
+  searchEmployeeValidator,
+  paginationValidator
 
 };

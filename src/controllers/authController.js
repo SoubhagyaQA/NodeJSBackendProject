@@ -17,7 +17,6 @@ const registerUser = async (req, res) => {
       return res.status(400).json({msg:'User already exists'});
 
     const hashedPassword = await bcrypt.hash(password, 10);
-//console.log("========>",hashedPassword);
 
     const newUser = await User.create({
       name,
@@ -54,10 +53,13 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
   
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ msg:'Invalid credentials' });
+    if (!user) 
+      return res.status(400).json(
+    { msg:'Invalid credentials' });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: 'Please enter valid Password' });
+    if (!isMatch) 
+      return res.status(400).json({ msg: 'Please enter valid Password' });
 
     const token = jwt.sign({ id:user._id },JWT_SECRET, { expiresIn:'8h' });
 
@@ -96,6 +98,7 @@ const updateUser = async (req, res) => {
     res.status(500).json({ msg: 'server error', error: err.message });
   }
 };
+
 
 
 //USER DELETE
