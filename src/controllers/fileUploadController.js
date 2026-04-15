@@ -7,7 +7,7 @@ const uploadFile = async (req, res) => {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
-console.log('Received file:', req.file); // Debugging log
+console.log('Received file:', req.file);
     const newFile = new File({
       filename: req.file.filename,
       originalname: req.file.originalname,
@@ -22,7 +22,7 @@ console.log('Received file:', req.file); // Debugging log
   }
 };
 
-// Optional: Get all uploaded files
+// Get all uploaded files
 const getFiles = async (req, res) => {
   try {
     const files = await File.find().sort({ uploadedAt: -1 });
