@@ -18,6 +18,7 @@ router.post('/otp-send',validator.sendOtpValidator,authController.sendOtp);
 router.post('/apply-from-civil',validator.applyCivilEngineerValidator,civilConroller.applyCivilEngineer);
 router.post('/upload-image',uploadImage.single('file'),fileUploadController.uploadFile);
 router.post('/upload-resume',uploadResume.single('file'),fileUploadController.applyJob);
+router.get("/resume/download/:id",validator.downloadResumeValidator,fileUploadController.downloadResume);
 //Resume upload api
 router.post("/apply-job",uploadResume.single("resume"),validator.jobApplicationValidator,fileUploadController.applyJob);
 router.get('/get-selected-data', civilConroller.getSelectedData);

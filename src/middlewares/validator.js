@@ -573,6 +573,34 @@ const paginationValidator = async (req, res, next) => {
 
   }
 };
+
+const downloadResumeValidator = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      id: Joi.string().hex().length(24).required().messages({
+          "string.base": "Application ID must be a string",
+          "string.hex": "Invalid application ID format",
+          "string.length": "Invalid application ID length",
+          "any.required": "Application ID is required",
+        }),
+    });
+    const { error } = schema.validate(req.params);
+    if (error) {
+      return res.status(400).json({
+        err: true,
+        message: error.details[0].message,
+        data: null,
+      });
+    }
+    next();
+  } catch (err) {
+    res.status(500).json({
+      err: true,
+      message: "Validation error",
+      data: err.message,
+    });
+  }
+};
 module.exports = {
   registerValidator,
   loginValidator,
@@ -586,6 +614,7 @@ module.exports = {
   jobApplicationValidator,
   employeeValidator,
   searchEmployeeValidator,
-  paginationValidator
+  paginationValidator,
+  downloadResumeValidator
 
 };
