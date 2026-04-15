@@ -1,0 +1,25 @@
+{"level":"info","message":{"method":"GET","status":304,"time":"35ms","url":"/api-docs/"},"timestamp":"2026-04-15T11:05:13.130Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/api-docs/swagger-ui-init.js"},"timestamp":"2026-04-15T11:05:13.347Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"29ms","url":"/api-docs/swagger-ui.css"},"timestamp":"2026-04-15T11:05:13.372Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"63ms","url":"/api-docs/swagger-ui-bundle.js"},"timestamp":"2026-04-15T11:05:13.406Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"66ms","url":"/api-docs/swagger-ui-standalone-preset.js"},"timestamp":"2026-04-15T11:05:13.410Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"18ms","url":"/api-docs/favicon-32x32.png"},"timestamp":"2026-04-15T11:05:14.617Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"18ms","url":"/api-docs/"},"timestamp":"2026-04-15T11:05:39.513Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"31ms","url":"/api-docs/swagger-ui.css"},"timestamp":"2026-04-15T11:05:39.631Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"35ms","url":"/api-docs/swagger-ui-bundle.js"},"timestamp":"2026-04-15T11:05:39.644Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"1ms","url":"/api-docs/swagger-ui-init.js"},"timestamp":"2026-04-15T11:05:39.726Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"11ms","url":"/api-docs/swagger-ui-standalone-preset.js"},"timestamp":"2026-04-15T11:05:39.734Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/api-docs/favicon-32x32.png"},"timestamp":"2026-04-15T11:05:41.626Z"}
+{"level":"info","message":{"method":"GET","status":200,"time":"112ms","url":"/"},"timestamp":"2026-04-15T11:09:43.039Z"}
+{"level":"info","message":{"method":"GET","status":404,"time":"25ms","url":"/favicon.ico"},"timestamp":"2026-04-15T11:09:43.516Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"3ms","url":"/"},"timestamp":"2026-04-15T11:10:10.700Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/"},"timestamp":"2026-04-15T11:10:12.353Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/"},"timestamp":"2026-04-15T11:10:13.569Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"1ms","url":"/"},"timestamp":"2026-04-15T11:10:14.680Z"}
+{"level":"info","message":{"method":"GET","status":200,"time":"19ms","url":"/"},"timestamp":"2026-04-15T11:10:24.622Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/"},"timestamp":"2026-04-15T11:10:31.161Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/"},"timestamp":"2026-04-15T11:11:20.269Z"}
+{"level":"error","message":"Test error","timestamp":"2026-04-15T11:11:30.424Z"}
+{"level":"info","message":{"method":"GET","status":500,"time":"5ms","url":"/error"},"timestamp":"2026-04-15T11:11:30.429Z"}
+{"level":"info","message":{"method":"GET","status":304,"time":"2ms","url":"/"},"timestamp":"2026-04-15T11:12:38.502Z"}
+{"level":"info","message":{"method":"GET","status":200,"time":"14ms","url":"/"},"timestamp":"2026-04-15T11:12:53.542Z"}

@@ -1,5 +1,7 @@
 const File = require('../models/FileUpload');
 const jobApply = require('../models/jobApply');
+const path = require("path");
+const fs = require("fs");
 
 const uploadFile = async (req, res) => {
   try {
@@ -33,7 +35,6 @@ const getFiles = async (req, res) => {
 };
 
 
-
 // Resume upload api
 const applyJob = async (req, res) => {
   try {
@@ -53,7 +54,6 @@ if (existingApplication) {
     message: "User already applied for this job",
   });
 }
-    
     const application = new jobApply({
       name,
       email,
@@ -83,8 +83,52 @@ if (existingApplication) {
     });
   }
 };
+
+
+// Download Resume 
+const downloadResume = async (req, res) => {
+  try {
+    const application = await jobApply.findById(req.params.id);
+
+    if (!application) {
+      return res.status(404).json({
+        message: "Application not found",
+      });
+    }
+
+    if (!application.resume || !application.resume.fileName) {
+      return res.status(404).json({
+        message: "Resume not found",
+      });
+    }
+
+    const filePath = path.join(
+      __dirname,
+      "..",
+      "uploads",
+      application.resume.fileName
+    );
+
+    // check file exists on server
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({
+        message: "File not found on server",
+      });
+    }
+
+    // download file
+    res.download(filePath, application.resume.fileName);
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+
+};
 module.exports = {
    uploadFile, 
    getFiles,
-   applyJob 
+   applyJob,
+   downloadResume
   };
